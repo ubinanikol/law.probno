@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивно приложение за 11 клас - Основи на правото с 15 теми, флешкарти и тестове">
+  <meta name="theme-color" content="#22c55e">
+  <title>Основи на правото – 11 клас</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Google Font Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik0xMCA5SDIyVjEwSDEwVjlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAgMTRIMjJWMTVIMTBWMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAgMTlIMjJWMjBIMTBWMTlaIiBmaWxsPSJ3aGl0ZSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAiIHkxPSIwIiB4Mj0iMzIiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMjJjNTVlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA2YjZkNCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="container flex items-center justify-between py-16">
+      <button
+        id="menuToggle"
+        class="btn btn--secondary btn--sm sidebar-toggle"
+        aria-label="Превключи меню"
+        aria-expanded="false"
+      >
+        <span class="menu-icon">☰</span>
+      </button>
+      
+      <div class="logo-section">
+        <h1 class="app-title">⚖️ Основи на правото – 11 клас</h1>
+      </div>
+      
+      <div class="progress-indicator">
+        <span class="progress-text">Прогрес: </span>
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+        </div>
+        <span id="progressText" class="progress-text">0/15</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application -->
+  <div class="app">
+    <!-- Left Drawer Navigation -->
+    <nav id="sidebar" class="sidebar" role="navigation" aria-label="Навигация по теми">
+      <div class="sidebar-header">
+        <h2>📚 Теми</h2>
+        <button id="resetProgress" class="btn btn--sm btn--outline reset-btn" 
+                title="Нулиране на целия прогрес">
+          Нулирай прогреса
+        </button>
+      </div>
+      
+      <ul id="topicsList" class="sidebar__list" role="list">
+        <!-- Темите ще бъдат генерирани от JS -->
+      </ul>
+      
+      <div class="sidebar-footer">
+        <div class="external-links">
+          <h3>🔗 Полезни връзки</h3>
+          <ul class="external-links-list">
+            <li><a href="https://lex.bg" target="_blank" rel="noopener">📖 Lex.bg - Правна база</a></li>
+            <li><a href="https://www.parliament.bg" target="_blank" rel="noopener">🏛️ Народно събрание</a></li>
+            <li><a href="https://www.mjs.bg" target="_blank" rel="noopener">⚖️ Министерство на правосъдието</a></li>
+            <li><a href="https://www.constcourt.bg" target="_blank" rel="noopener">🏛️ Конституционен съд</a></li>
+            <li><a href="https://www.sac.government.bg" target="_blank" rel="noopener">📋 Върховен административен съд</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main id="mainContent" class="content" role="main">
+      <div class="content-wrapper">
+        <!-- Topic Header -->
+        <div class="topic-header">
+          <h2 id="topicTitle" class="topic-title">Зареждане...</h2>
+          <div id="topicBadge" class="topic-badge" style="display: none;"></div>
+        </div>
+        
+        <!-- Topic Content (Theory + Interactive sections) -->
+        <div id="topicContent" class="topic-content">
+          <div class="topic-section">
+            <p>Зареждане на съдържанието...</p>
+          </div>
+        </div>
+        
+        <!-- External Resources -->
+        <div class="external-resources">
+          <h3>🌐 Допълнителни материали</h3>
+          <div class="resources-grid">
+            <a href="https://lex.bg" target="_blank" rel="noopener" class="resource-card">
+              <div class="resource-icon">📚</div>
+              <div class="resource-info">
+                <h4>Lex.bg</h4>
+                <p>Пълна правна база данни с всички закони и подзаконови актове</p>
+              </div>
+            </a>
+            <a href="https://www.parliament.bg" target="_blank" rel="noopener" class="resource-card">
+              <div class="resource-icon">🏛️</div>
+              <div class="resource-info">
+                <h4>Народно събрание</h4>
+                <p>Официален сайт на законодателната власт в България</p>
+              </div>
+            </a>
+            <a href="https://www.mjs.bg" target="_blank" rel="noopener" class="resource-card">
+              <div class="resource-icon">⚖️</div>
+              <div class="resource-info">
+                <h4>Министерство на правосъдието</h4>
+                <p>Нормативни актове и информация за правосъдната система</p>
+              </div>
+            </a>
+            <a href="https://www.constcourt.bg" target="_blank" rel="noopener" class="resource-card">
+              <div class="resource-icon">🏛️</div>
+              <div class="resource-info">
+                <h4>Конституционен съд</h4>
+                <p>Решения и становища по конституционни въпроси</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button
+            id="startQuizBtn"
+            class="btn btn--primary btn--lg quiz-btn"
+            aria-haspopup="dialog"
+          >
+            <span class="btn-icon">🎯</span>
+            Тест 15 въпроса
+          </button>
+          <button
+            id="markCompleteBtn"
+            class="btn btn--secondary btn--lg complete-btn"
+          >
+            <span class="btn-icon">✓</span>
+            Отбележи като завършена
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div
+    id="quizModal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="quizHeading"
+    aria-describedby="quizDescription"
+  >
+    <div class="modal__overlay" tabindex="-1"></div>
+    <div class="modal__box" role="document">
+      <header class="modal__header">
+        <div class="quiz-header-content">
+          <h3 id="quizHeading">🎯 Тест</h3>
+          <div id="quizProgress" class="quiz-progress"></div>
+        </div>
+        <button
+          class="btn btn--secondary btn--sm close-btn"
+          id="closeModalBtn"
+          aria-label="Затвори теста"
+          type="button"
+        >
+          ✕
+        </button>
+      </header>
+      <div class="modal__body" id="quizDescription">
+        <!-- Quiz content ще се генерира динамично -->
+      </div>
+      <footer class="modal__footer">
+        <!-- Quiz navigation buttons ще се генерират динамично -->
+      </footer>
+    </div>
+  </div>
+
+  <!-- Tooltip -->
+  <div id="tooltip" class="tooltip hidden" role="tooltip">
+    <div class="tooltip-content"></div>
+    <div class="tooltip-arrow"></div>
+  </div>
+
+  <!-- Success Animation -->
+  <div id="successAnimation" class="success-animation hidden" role="dialog" aria-modal="true">
+    <div class="success-content">
+      <div class="success-emoji">🎉</div>
+      <h2>Браво!</h2>
+      <p>Завършихте всички теми по "Основи на правото"</p>
+      <button class="btn btn--primary" onclick="this.parentElement.parentElement.classList.add('hidden')">
+        Затвори
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <p class="footer-text">
+        <span class="cc-notice">
+          📄 Това съдържание е достъпно под лиценз 
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">
+            Creative Commons Attribution-ShareAlike 4.0
+          </a>
+        </span>
+        <br>
+        <small>Образователно приложение за 11 клас - Основи на правото</small>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Main Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
